@@ -10,6 +10,10 @@ const StyledA = styled.a`
   &:last-child {
     margin-right: 0;
   }
+
+  &:hover {
+    opacity: 0.7;
+  }
 `;
 
 const SocialImage = ({images}) => (

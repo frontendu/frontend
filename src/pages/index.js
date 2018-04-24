@@ -1,20 +1,12 @@
 import React from 'react';
-import Link from 'gatsby-link';
 import get from 'lodash/get';
 import Helmet from 'react-helmet';
 import styled from 'styled-components';
 
 import Footer from '../components/Footer';
 import Time from '../components/Time';
-
-const StyledH3 = styled.h3`
-  margin-bottom: 3px;
-`;
-
-const StyledLink = styled(Link)`
-  text-decoration: underline;
-  box-shadow: none;
-`;
+import Title from '../components/Title';
+import Link from '../components/Link';
 
 const StyledPost = styled.div`
   margin-bottom: 35px;
@@ -24,36 +16,34 @@ const StyledPost = styled.div`
   }
 `;
 
-class BlogIndex extends React.Component {
-  render() {
-    const siteTitle = get(this, 'props.data.site.siteMetadata.title');
-    const posts = get(this, 'props.data.allMarkdownRemark.edges');
+const BlogIndex = ({data}) => {
+  const siteTitle = get(data, 'site.siteMetadata.title');
+  const posts = get(data, 'allMarkdownRemark.edges');
 
-    return (
-      <div>
-        <main>
-          <Helmet title={siteTitle} />
-          {posts.map(({node}) => {
-            const title = get(node, 'frontmatter.title') || node.fields.slug;
+  return (
+    <div>
+      <main>
+        <Helmet title={siteTitle} />
+        {posts.map(({node}) => {
+          const title = get(node, 'frontmatter.title') || node.fields.slug;
 
-            return (
-              <StyledPost key={node.fields.slug}>
-                <StyledH3>
-                  <StyledLink to={node.fields.slug}>
-                    {title}
-                  </StyledLink>
-                </StyledH3>
-                <Time>{node.frontmatter.date}</Time>
-                <p dangerouslySetInnerHTML={{__html: node.frontmatter.description}} />
-              </StyledPost>
-            );
-          })}
-        </main>
-        <Footer />
-      </div>
-    );
-  }
-}
+          return (
+            <StyledPost key={node.fields.slug}>
+              <Title level='3'>
+                <Link to={node.fields.slug}>
+                  {title}
+                </Link>
+              </Title>
+              <Time>{node.frontmatter.date}</Time>
+              <p dangerouslySetInnerHTML={{__html: node.frontmatter.description}} />
+            </StyledPost>
+          );
+        })}
+      </main>
+      <Footer />
+    </div>
+  );
+};
 
 export default BlogIndex;
 

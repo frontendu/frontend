@@ -4,6 +4,7 @@ import get from 'lodash/get';
 
 import Footer from '../components/Footer';
 import Time from '../components/Time';
+import Title from '../components/Title';
 
 const PostTemplate = ({data}) => {
   const post = data.markdownRemark;
@@ -13,7 +14,7 @@ const PostTemplate = ({data}) => {
     <div>
       <main>
         <Helmet title={`${post.frontmatter.title} | ${siteTitle}`} />
-        <h1>{post.frontmatter.title}</h1>
+        <Title level='1'>{post.frontmatter.title}</Title>
         <Time>{post.frontmatter.date}</Time>
         <div dangerouslySetInnerHTML={{__html: post.html}} />
       </main>

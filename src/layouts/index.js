@@ -1,30 +1,12 @@
 import React from 'react';
-import styled, {injectGlobal} from 'styled-components';
-import Link from 'gatsby-link';
+import styled from 'styled-components';
 
 import Image from '../components/Image';
+import Link from '../components/Link';
+import Title from '../components/Title';
 
 import churchill from '../assets/churchill.svg';
 import {colors} from '../constants';
-
-injectGlobal`
-  h1, h2, h3, h4, h5, h6 {
-    margin: 0;
-    color: ${colors.red};
-  }
-
-  p {
-    margin: 0;
-  }
-
-  a, a:hover, a:visited {
-    color: ${colors.red};
-  }
-
-  a:hover, a:hover * {
-    opacity: 0.7;
-  }
-`;
 
 const StyledWrapper = styled.div`
   margin: 0 auto;
@@ -32,29 +14,19 @@ const StyledWrapper = styled.div`
   padding: 30px 25px 40px;
 `;
 
-const StyledLink = styled(Link)`
-  box-shadow: none;
-  text-decoration: none;
-  color: inherit;
-
-  &:visited {
-    text-decoration: none;
-  }
-`;
-
 const StyledRootHeader = styled.div`
   margin-bottom: 70px;
   text-align: center;
 `;
 
-const StyledP = styled.p`
-  margin-top: 10px;
-  color: ${colors.grey};
-  font-size: 12px;
+const StyledArticleHeader = styled.div`
+  margin-bottom: 70px;
 `;
 
-const StyledH3 = styled.h3`
-  margin-bottom: 70px;
+const StyledLead = styled.p`
+  margin: 10px 0 0;
+  color: ${colors.grey};
+  font-size: 12px;
 `;
 
 const StyledChildrenWrapper = styled.div`
@@ -63,21 +35,21 @@ const StyledChildrenWrapper = styled.div`
 
 const rootHeader = () => (
   <StyledRootHeader>
-    <StyledLink to={'/'}>
+    <Link to={'/'}>
       <Image src={churchill} maxWidth='100px' />
-      <h1>frontend.youknow</h1>
-    </StyledLink>
-    <StyledP>News for the last day. Not only a boring list of articles and technologies that have appeared, <br /> but also the burgeoning of social networks and conferences.</StyledP>
+      <Title level='1'>frontend.youknow</Title>
+    </Link>
+    <StyledLead>News for the last day. Not only a boring list of articles and technologies that have appeared, <br /> but also the burgeoning of social networks and conferences.</StyledLead>
   </StyledRootHeader>
 );
 
 const arcticleHeader = () => (
-  <div>
-    <StyledLink to={'/'}>
+  <StyledArticleHeader>
+    <Link to={'/'}>
       <Image src={churchill} maxWidth='100px' />
-      <StyledH3>frontend.youknow</StyledH3>
-    </StyledLink>
-  </div>
+      <Title level='3'>frontend.youknow</Title>
+    </Link>
+  </StyledArticleHeader>
 );
 
 class Template extends React.Component {
