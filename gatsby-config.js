@@ -2,7 +2,7 @@ module.exports = {
   siteMetadata: {
     title: 'frontend.youknow',
     author: '`Roman Ponomarev',
-    description: '',
+    description: 'News for the last day. Not only a boring list of articles and technologies that have appeared, but also the burgeoning of social networks and conferences.',
     siteUrl: 'https://frontend.youknow.st'
   },
   plugins: [
