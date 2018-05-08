@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import SocialImages from '../SocialImages';
 
 import twitter from '../../assets/twitter.svg';
+import github from '../../assets/github.svg';
 import mail from '../../assets/mail.svg';
 import {colors} from '../../constants';
 
@@ -27,7 +28,8 @@ const StyledLabel = styled.p`
 
 const socialImages = [
   {src: mail, link: 'mailto:frontend.youknow@gmail.com'},
-  {src: twitter, link: 'https://twitter.com/FrontendYouknow'}
+  {src: twitter, link: 'https://twitter.com/FrontendYouknow'},
+  {src: github, link: 'https://github.com/frontendu/frontend'}
 ];
 
 const Footer = () => (
