@@ -6,6 +6,10 @@ import {colors} from '../../constants';
 const TitleLevel1 = styled.h1`
   color: ${colors.red};
   margin: 0;
+
+  @media(max-width: 400px) {
+    font-size: 28px;
+  }
 `;
 const TitleLevel2 = TitleLevel1.withComponent('h2');
 const TitleLevel3 = TitleLevel1.withComponent('h3');
